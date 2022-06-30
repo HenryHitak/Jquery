@@ -1,0 +1,10 @@
+300622 
+
+Injection - Lynn
+
+attacker can inject via malicious file and force to execute certain commands -> privacy problem
+
+DB - Database
+Structure Query Language - SQL - getting the info from DB.
+
+
