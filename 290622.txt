@@ -1,0 +1,20 @@
+290622
+
+Open Web App Security Proj. - Alyce
+Security Misconfig
+
+system control that has inaccurate configuration.
+occurs if you use same password or similar - hacker might use your default password or try to figure it out.
+if you don't update = > hacker will be easy to breach
+
+common type
+default account
+simple password
+sw out of date/flaws are unpatched
+unused feats enabled or installed
+improper/poor app coding practices
+files and directories are unprotected
+directory traversal
+
+
+

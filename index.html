@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <script src='./jquery-3.6.0.js'></script>
+    <title>Document</title>
+</head>
+<body>
+    <h2>
+        Web Dev Class 
+    </h2>
+    <p>
+        We all love Web Dev
+    </p>
+    <p>
+        Vancouver Love
+    </p>
+    <input type='password' id='password'>
+    Check me<input type='checkbox' id='chEnable'>
+    <input type='text' id='something1' disabled='disabled'>
+    <button type='button'>Click Me</button>
+</body>
+<script>
+    let element = $('#password').attr('type');
+    let value = $('button').text('show password');
+    let checkVal = $('#chEnable').prop('chekched');
+    let inputDefColor = $('input').css('background-color');
+    $('input')
+    // $('input').focus(function(event){
+    .on('focus',function(event){
+        $(event.target).css('background-color','yellow');
+    })
+    // $('input').blur(function(){
+    .on('blur',function(event){
+        $(event.target).css('background-color',inputDefColor);
+    });
+    // $('#chEnable').change(function(){
+    //     if($('#something1').attr('disabled')){
+    //         $('#something1').removeAttr('disabled');
+    //     }else{
+    //         $('#something1').attr('disabled','disabled');
+    //     }
+    // })
+    $('#chEnable').change(function(){
+        if($('#chEnable').prop('checked')){
+            $('#something1').prop('disabled',false);
+        }else{
+            $('#something1').prop('disabled',true);
+        }
+    })
+    $('button').click(function(){
+        if($('#password').attr('type')=='password'){ // == 동일하다면
+        $('#password').attr('type','text');
+        $('button').text('hide password');
+    }else {
+        $('#password').attr('type','password');
+        $('button').text('show password');
+    };
+    })
+    // $('button').click(function(){
+    //     //$('p').hide(); //class 일 경우 . id일경우 #를 사용하여 selector를 사용한다. have to use jquery to use hide no htmlselector, set of results = collection of array    
+    //     $('#password').attr('type','password'); == 는 동일 사인 true, ===는 value까지 
+    // })
+    $('button').click(function(){
+        if($('button').text()=="Hide"){
+            //$('div').hide(1000);
+            // $('div').toggle(1000);
+            $('div').fadeOut("slow");
+            $('button').text("Show");
+            $('h1').addClass("active");
+        }else{
+            // $('div').show(1000);
+            // $('div').toggle(1000);
+            $('div').fadeIn("slow");
+            $('button').text("Hide");
+            $('h1').removeClass('active');
+        }
+    })
+</script>
+</html>
