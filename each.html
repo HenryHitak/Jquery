@@ -8,9 +8,65 @@
     <script src="./jquery-3.6.0.js"></script>
 </head>
 <body>
-    
+    <ul>
+        <li>Juan <i>marks:</i> <b>50</b></li>
+        <li>April <i>marks:</i> <b>90</b></li>
+        <li>Hitak <i>marks:</i> <b>40</b></li>
+    </ul>
+    <ul>
+
+    </ul>
+    <ul>
+
+    </ul>
+    <button type="button">Name</button>
+    <button type="button">Populate</button>
+    <button type="button">Marks</button>
+    <script>
 </body>
-<script>
-    
+    $('button').eq(0).click(function(){
+        let addNumb = 0;
+        $('ul').eq(0).find('li').each(function(i , element){
+            addNumb += parseInt($(element).find('b').text());
+            // console.log(addNumb);
+            // if(index<2){
+                //     $(element).css('background-color','yellow');
+                // }
+            });
+            avg = addNumb/$('ul').eq(0).find('li').length;
+            console.log(avg);
+    });
+    let name = ['Akane', 'Hitak', 'Mamiko'];
+    $('button').eq(1).click(function(){
+        $('ul').eq(1).children().remove();
+        $.each(name,function(index, value){
+            let li = $('<li></li>');
+            li.text(value);
+            $('ul').eq(1).append(li);
+        });
+    })
+    let students = {
+        akane:50,
+        hitak:20,
+        mamiko:51
+    }
+    $('button').eq(2).click(function(){
+        $('ul').eq(2).children().remove();
+        $.each(students,function(name, marks){
+            let li = $('<li></li>');
+            let b = $('<b></b>');
+            b.text(marks);
+            li.text(name+":");
+            li.append =(b);
+            $('ul').eq(2).append(li);
+        });
+    })
+        //     let uniqueChars = [];
+    //     name.forEach(() => {
+    // if (!uniqueChars.includes(Mamiko)) {
+    //     uniqueChars.push(Mamiko);
+    // }
+    // });
+
 </script>
 </html>
