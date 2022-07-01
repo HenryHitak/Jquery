@@ -9,15 +9,25 @@
 </head>
 <body>
     <table>
-        <th>
-            HTML
-        </th>
-        <th>
-            CSS
-        </th>
-        <th>
-            Javascript
-        </th>
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    HTML
+                </th>
+                <th>
+                    CSS
+                </th>
+                <th>
+                    Javascript
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
     </table>
     <button type="button">Populate</button>
 </body>
@@ -26,15 +36,30 @@
     Akane:[50,60,80],
     Mamiko:[80,65,70],
     Juan:[70,80,75] }
+    // $('button').click(function(){
+    //     $('th').children().remove();
+    //     $.each(students,function(index, value){
+    //         let tr = $('<tr></tr>');
+    //         let td = $('<td></td>');
+    //         tr.text(index+":" );
+    //         td.text(value);
+    //         tr.append=(td);
+    //         $('th').append(tr);
+    //     })
+    // })
     $('button').click(function(){
-        $('th').children().remove();
-        $.each(students,function(index, value){
+        $('tbody').children().remove();
+        $.each(students,function(index,value){
             let tr = $('<tr></tr>');
             let td = $('<td></td>');
-            tr.text(index+":" );
-            td.text(value);
-            tr.append=(td);
-            $('th').append(tr);
+            td.text(index);
+            tr.append(td);
+            $.each(value,function(index,marks){
+                let tdMarks = $('<td></td>');
+                tdMarks.text(marks);
+                tr.append(tdMarks);
+            });
+            $('tbody').append(tr);
         })
     })
 </script>
