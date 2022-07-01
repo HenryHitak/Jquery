@@ -1,66 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./jquery-3.6.0.js"></script>
     <title>Hitak-CW4-JS1</title>
-</head>
-<body>
+  </head>
+  <body>
+    <input type="text" placeholder="Write student name" />
+    <input type="number" placeholder="Write course mark 1" />
+    <input type="number" placeholder="Write course mark 2" />
+    <input type="number" placeholder="Write course mark 3" />
+    <button type="button">Add</button>
     <table>
-        <thead>
-            <tr>
-                <th>
-                    Name
-                </th>
-                <th>
-                    HTML
-                </th>
-                <th>
-                    CSS
-                </th>
-                <th>
-                    Javascript
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>HTML</th>
+          <th>CSS</th>
+          <th>Javascript</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
     </table>
-    <button type="button">Populate</button>
-</body>
-<script>
+  </body>
+  <script>
     let students = {
-    Akane:[50,60,80],
-    Mamiko:[80,65,70],
-    Juan:[70,80,75] }
-    // $('button').click(function(){
-    //     $('th').children().remove();
-    //     $.each(students,function(index, value){
-    //         let tr = $('<tr></tr>');
-    //         let td = $('<td></td>');
-    //         tr.text(index+":" );
-    //         td.text(value);
-    //         tr.append=(td);
-    //         $('th').append(tr);
-    //     })
-    // })
-    $('button').click(function(){
-        $('tbody').children().remove();
-        $.each(students,function(index,value){
-            let tr = $('<tr></tr>');
-            let td = $('<td></td>');
-            td.text(index);
-            tr.append(td);
-            $.each(value,function(index,marks){
-                let tdMarks = $('<td></td>');
-                tdMarks.text(marks);
-                tr.append(tdMarks);
-            });
-            $('tbody').append(tr);
-        })
-    })
-</script>
+      Akane: [50, 60, 80],
+      Mamiko: [80, 65, 70],
+      Juan: [70, 80, 75],
+    };
+    populate();
+    $("button")
+      .eq(0)
+      .click(function () {
+        let inputs = $("input");
+        let name = "";
+        let mark = [];
+        inputs.each(function (i, input) {
+          if (i == 0) {
+            name = $(input).val();
+          } else if (i > 0 && i < 4) {
+            mark.push(parseInt($(input).val()));
+          }
+        });
+        students[name] = mark;
+        populate();
+      });
+    function populate() {
+      $("tbody").children().remove();
+      $.each(students, function (index, value) {
+        let tr = $("<tr></tr>");
+        let td = $("<td></td>");
+        td.text(index);
+        tr.append(td);
+        $.each(value, function (index, marks) {
+          let tdMarks = $("<td></td>");
+          tdMarks.text(marks);
+          tr.append(tdMarks);
+        });
+        $("tbody").append(tr);
+      });
+    }
+  </script>
 </html>
