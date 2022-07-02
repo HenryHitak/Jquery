@@ -95,44 +95,90 @@
     //     });
     //   });
     // });
-    populate();
-    function populate() {
-      $.getJSON("./MOCK_DATA.json", function (data) {
-        $.each(data, function (index, obj) {
-          let tr = $("<tr></tr>");
-          $.each(obj, function (key, value) {
-            let tdvalue = $("<td></td>");
-            tdvalue.text(value);
-            tr.append(tdvalue);
-          });
-          $("tbody").append(tr);
+    // populate();
+    // function populate() {
+    //   $.getJSON("./MOCK_DATA.json", function (data) {
+    //     $.each(data, function (index, obj) {
+    //       let tr = $("<tr></tr>");
+    //       $.each(obj, function (key, value) {
+    //         let tdvalue = $("<td></td>");
+    //         tdvalue.text(value);
+    //         tr.append(tdvalue);
+    //       });
+    //       $("tbody").append(tr);
+    //     });
+    //   });
+    // }
+    // // Get the modal
+    // var modal = document.getElementById("myModal");
+
+    // // Get the button that opens the modal
+    // var btn = document.getElementById("myBtn");
+
+    // // Get the <span> element that closes the modal
+    // var span = document.getElementsByClassName("close")[0];
+
+    // // When the user clicks on the button, open the modal
+    // btn.onclick = function () {
+    //   modal.style.display = "block";
+    // };
+
+    // // When the user clicks on <span> (x), close the modal
+    // span.onclick = function () {
+    //   modal.style.display = "none";
+    // };
+
+    // // When the user clicks anywhere outside of the modal, close it
+    // window.onclick = function (event) {
+    //   if (event.target == modal) {
+    //     modal.style.display = "none";
+    //   }
+    // };
+    $("button").click(function () {
+      $(".modal").show();
+    });
+    $(".close").click(function () {
+      $(".modal").hide();
+    });
+    // $(window).click(function(event){
+    //     console.log(event.target);
+    //     console.log($('#myModal'));
+    //     console.log($(event.target));
+    //     if($(event.target)==$('#myModal')){
+
+    //         $('.modal').hide();
+    //     }
+    // })
+    $.getJSON("./MOCK_DATA.json", function (data) {
+      $.each(data, function (index, obj) {
+        let tr = $("<tr></tr>");
+        tr.append("<td>" + obj.first_name + "</td>");
+        tr.append("<td>" + obj.last_name + "</td>");
+        let td3 = $("<td></td>");
+        let button = $(
+          '<button class="' +
+            obj.id +
+            '" type="button">Show infromation</button>'
+        );
+        button.click(function (event) {
+          console.log(obj.email);
+          $(".modal-content p").eq(0).append(obj.id);
+          $(".modal-content p").eq(1).append(obj.first_name);
+          $(".modal-content p").eq(2).append(obj.last_name);
+          $(".modal-content p").eq(3).append(obj.gender);
+          $(".modal-content p").eq(4).append(obj.email);
+          $(".modal-content p").eq(5).append(obj.Address);
+          $(".modal").show();
         });
+        td3.append(button);
+        tr.append(td3);
+        // $.each(obj,function(key,value){
+        //     let td = $('<td></td>');
+        //     td.text(value);
+        //     tr.append(td);
+        // });
+        $("tbody").append(tr);
       });
-    }
-    // Get the modal
-    var modal = document.getElementById("myModal");
-
-    // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on the button, open the modal
-    btn.onclick = function () {
-      modal.style.display = "block";
-    };
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-      modal.style.display = "none";
-    };
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    };
+    });
   </script>
 </html>

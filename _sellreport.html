@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./jquery-3.6.0.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Item Name</th>
+          <th>Price</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </body>
+  <script>
+    populate();
+    function populate() {
+      $.getJSON("./sell_report.json", function (data) {
+        $.each(data, function (index, obj) {
+          let tr = $("<tr></tr>");
+          tr.append("<td>" + obj.id + "</td>");
+          tr.append("<td>" + obj.item_name + "</td>");
+          tr.append("<td>" + obj.price + "</td>");
+          tr.append("<td>" + obj.amount * obj.price + "</td>");
+          $.each(obj, function (key, value) {
+            let td = $("<td></td>");
+            td.text(value);
+          });
+          $("tbody").append(tr);
+        });
+      });
+    }
+  </script>
+</html>
