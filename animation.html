@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./jquery-3.6.0.js"></script>
+    <title>Document</title>
+    <style>
+      .box {
+        background-color: lightgreen;
+        height: 100px;
+        width: 100px;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <button type="button">Run</button>
+    <button type="button">close</button>
+    <button type="button">Run2</button>
+
+    <div class="box"></div>
+  </body>
+  <script>
+    $("button")
+      .eq(0)
+      .click(function () {
+        $(".box").animate({
+          left: "30%",
+          width: "+=150px",
+        })
+      })
+    $("button")
+      .eq(1)
+      .click(function (event) {
+        $(".box").animate({
+          height: "toggle",
+        })
+        if ($(event.target).text() == "close") {
+          $(event.target).text("open")
+        } else {
+          $(event.target).text("close")
+        }
+      })
+    $("button")
+      .eq(2)
+      .click(function () {
+        let box = $(".box")
+        box.animate({ left: "90%" }, "slow")
+        box.animate({ top: "78%" }, "slow")
+        box.animate({ left: "0%" }, "fast")
+        box.animate({ top: "0%" }, "slow")
+
+        // box.animate({ height: "300px", opacity: "0.4" }, "slow")
+        // box.animate({ height: "300px", opacity: "0.8" }, "slow")
+        // box.animate({ height: "100px", opacity: "0.4" }, "slow")
+        // box.animate({ height: "100px", opacity: "0.8" }, "slow")
+      })
+  </script>
+</html>

@@ -1,0 +1,11 @@
+070422 
+ID and Authentication Failures - June
+
+Poor credential mngmnt
+weak password & cryptography
+
+Poor session mngmnt
+password url
+weak usernames & passwords
+
+use OTP to prevent and as a solution (2nd factor authentication).
