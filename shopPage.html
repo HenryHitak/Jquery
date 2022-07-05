@@ -1,88 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./jquery-3.6.0.js"></script>
     <title>Document</title>
     <style>
-      .box {
-        padding: 12px 10px;
-        background-color: lightsalmon;
-        width: 20px;
-        border-radius: 5px;
-        text-align: center;
-        margin: 8px 10px;
-      }
-      .box:hover,
-      .active {
-        background-color: bisque;
-        cursor: pointer;
-      }
-      #boxCart {
-        margin-top: 10px;
-      }
+        .box{
+            padding:12px 10px;
+            background-color: lightsalmon;
+            width: 20px;
+            border-radius: 5px;
+            text-align: center;
+            margin: 8px 10px;
+        }
+        .box:hover, .active {
+            background-color: bisque;
+            cursor: pointer;
+        }
+        #boxCart{
+            margin-top: 10px;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <button type="button">Add more box</button>
     <button type="button">move up</button>
     <button type="button">move down</button>
-    <div id="boxCart"></div>
-  </body>
-  <script>
-    let boxNumber = 1
-    let selectedBox = ""
-    $("button")
-      .eq(0)
-      .click(function () {
-        //create the box button
-        let div = $("<div></div>")
-        div.addClass("box")
-        div.text(boxNumber)
-        div.click(function (event) {
-          if ($(event.target).hasClass("active")) {
-            //if($(event.target)==selectedBox)
-            $(event.target).removeClass("active")
-            selectedBox = null
-            $("button").eq(1).prop("disabled".true)
-            $("button").eq(2).prop("disabled".true)
-          } else {
-            $(".box").removeClass("active") // remove selected box leftovers...
-            selectedBox = $(event.target) //selected box target
-            $(event.target).addClass("active") //active button color
-            $("button").eq(1).prop("disabled".false)
-            $("button").eq(2).prop("disabled".false)
-          }
-        })
-        $("#boxCart").append(div)
-        boxNumber++
-      })
-    $("button")
-      .eq(1)
-      .click(function () {
+    <div id="boxCart">
+
+    </div>
+    
+</body>
+<script>
+    let boxNumber = 1;
+    let selectedBox = "";
+    $('button').eq(0).click(function(){//create the box button
+        let div = $('<div></div>');
+        div.addClass("box");
+        div.text(boxNumber);
+        div.click(function(event){
+            if($(event.target).hasClass('active')){
+                //if($(event.target)==selectedBox)
+                $(event.target).removeClass('active');
+                selectedBox = null;
+                $('button').eq(1).prop('disabled'.true);
+                $('button').eq(2).prop('disabled'.true);
+            }else{
+                $('.box').removeClass("active");// remove selected box leftovers...
+                selectedBox = $(event.target);//selected box target
+                $(event.target).addClass("active");//active button color
+                $('button').eq(1).prop('disabled'.false);
+                $('button').eq(2).prop('disabled'.false);
+            }
+        });
+        $("#boxCart").append(div);
+        boxNumber++;
+    });
+    $('button').eq(1).click(function(){
         //console.log($('#boxCart .box').first());
-        if ($(selectedBox).index() == 0) {
-          // let lastitem = $(".box").length - 1;
-          // console.log($('.box').eq(lastitem));
-          let lastItem = $("#boxCart .box").last()
-          lastItem.after(selectedBox)
-        } else {
-          let prevItem = $(selectedBox).prev()
-          prevItem.before(selectedBox)
+        if($(selectedBox).index()==0){
+            // let lastitem = $(".box").length - 1;
+            // console.log($('.box').eq(lastitem));
+            let lastItem = $('#boxCart .box').last();
+            lastItem.after(selectedBox);
+        }else{
+            let prevItem = $(selectedBox).prev();
+            prevItem.before(selectedBox);
         }
-      })
-    $("button")
-      .eq(2)
-      .click(function () {
-        if ($(selectedBox).index() == $("#boxCart .box").last().index()) {
-          let firstItem = $("#boxCart .box").first()
-          firstItem.before(selectedBox)
-        } else {
-          let nextItem = $(selectedBox).next()
-          nextItem.after(selectedBox)
+        
+    })
+    $('button').eq(2).click(function(){
+        if($(selectedBox).index()==$('#boxCart .box').last().index()){
+            let firstItem = $('#boxCart .box').first();
+            firstItem.before(selectedBox);
+        }else{
+            let nextItem = $(selectedBox).next();
+            nextItem.after(selectedBox);        
         }
-      })
-  </script>
+    })
+
+
+</script>
 </html>

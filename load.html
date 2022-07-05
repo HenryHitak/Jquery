@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./jquery-3.6.0.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+<script>
+    $('div').load('./file/names.txt', function(responseText,Statustxt,jqxhr){
+        if(Statustxt == "success")
+        alert('content loaded!');
+        if(Statustxt == "error")
+        alert('error: '+jqxhr.status+""+jqxhr.statusText);
+        console.log(Statustxt);
+        console.log(responseText);
+        console.log(jqxhr);
+        // alert('file loaded');
+    });
+</script>
+</html>
