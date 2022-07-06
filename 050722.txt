@@ -1,0 +1,6 @@
+050722
+
+Security logging and monitoring failures - Chris
+
+digital forensic analysis - investigation, arhived data of loggin for breached data.
+
